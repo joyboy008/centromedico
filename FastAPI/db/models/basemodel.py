@@ -1,19 +1,6 @@
 from pydantic import BaseModel
 
 
-class Paciente11(BaseModel):
-    id: str | None
-    dpi: str
-    nombre: str
-    apellido: str
-
-
-class User(BaseModel):
-    id: str | None
-    username: str | None
-    email: str | None
-
-
 class Paciente(BaseModel):
     id: str | None
     idPaciente: int
@@ -48,55 +35,11 @@ class Paciente(BaseModel):
     causa_de_muerte: str | None
 
 
-class Paciente1(BaseModel):  # Renombrar por Paciente
-    id: str | None
-    dpi: str
-    igss: str
-    igss_derecho: str
-    idPaciente: int
-    paciente_codigo: int
-    nombre: str
-    apellido: str
-    etnia: str
-    numero_expediente: int
-    fechaNacimiento: str
-    genero: str
-    direccion: str
-    municipio: str
-    departamento: str
-    nacionalidad: str
-    telefono: int
-    email: str
-    ocupacion: str
-    seguro: str
-    estado_civil: str
-    consulta_motivo: str
-    consulta_dia: str
-    consulta_numero: str
-    diagnostico: str
-    tratamiento: str
-    fecha: str
-    emergencia_nombre: str
-    emergencia_apellido: str
-    emergencia_parentesco: str
-    emergencia_telefono: int
-    hospitalizacion: str | None
-    diagnostico_egreso: str | None
-    diagnostico_egreso_codigo: int | None
-    tratamiento_hospital: str | None
-    complicaciones: str | None
-    complicaciones_codigo: int | None
-    operaciones: str | None
-    operaciones_codigo: int | None
-    egreso: str | None
-    autopsia: str | None
-    causa_de_muerte: str | None
-
-
 class Enfermero(BaseModel):
-    idEmpleado: int
+    id: str | None
+    idEnfermero: int
+    dpi: int
     nombre: str
-    apellido: str
     pw: str  # Considera usar un campo específico para contraseñas como PasswordStr
     pwhash: str
     especialidad: str
@@ -104,12 +47,13 @@ class Enfermero(BaseModel):
     fechaNacimiento: str  # Podrías considerar usar un campo específico para fechas
     genero: int
     direccion: str
+    municipio: str
+    departamento: str
+    nacionalidad: str
     telefono: int
     email: str
-    seguro: str
     estado_civil: str
     emergencia_nombre: str
-    emergencia_apellido: str
     emergencia_parentesco: str
     emergencia_telefono: int
     salario: float
@@ -118,22 +62,24 @@ class Enfermero(BaseModel):
 
 
 class Secretaria(BaseModel):
-    idEmpleado: int
+    id: str | None
+    idSecretaria: int
+    dpi: int
     nombre: str
-    apellido: str
-    pw: str  # Considera usar un campo específico para contraseñas como PasswordStr
+    pw: str
     pwhash: str
     especialidad: str
     igss: str
-    fechaNacimiento: str  # Podrías considerar usar un campo específico para fechas
+    fechaNacimiento: str
     genero: int
     direccion: str
+    municipio: str
+    departamento: str
+    nacionalidad: str
     telefono: int
     email: str
-    seguro: str
     estado_civil: str
     emergencia_nombre: str
-    emergencia_apellido: str
     emergencia_parentesco: str
     emergencia_telefono: int
     salario: float
@@ -142,58 +88,71 @@ class Secretaria(BaseModel):
 
 
 class Doctor(BaseModel):
+    id: str | None
     idDoctor: int
+    dpi: int
     nombre: str
-    apellido: str
-    pw: str
+    pw: str  # Considera usar un campo específico para contraseñas como PasswordStr
     pwhash: str
     especialidad: str
     igss: str
-    horario_ingreso: str
-    horario_egreso: str
-    horario3: str
-    fechaNacimiento: str
+    fechaNacimiento: str  # Podrías considerar usar un campo específico para fechas
     genero: int
     direccion: str
+    municipio: str
+    departamento: str
+    nacionalidad: str
     telefono: int
     email: str
-    seguro: str
     estado_civil: str
-    confirmacion: str
-    chatbot_conversacion: str
     emergencia_nombre: str
-    emergencia_apellido: str
     emergencia_parentesco: str
     emergencia_telefono: int
-    paciente_clase: str | None
     salario: float
     bonos: float | None
     descuentos: float | None
+    confirmacion: str
+    horarios: str | None
+    chatbot_conversacion: str
 
 
 class Admon(BaseModel):
+    id: str | None
     idAdmon: int
+    dpi: int
     nombre: str
-    apellido: str
-    pw: str
+    pw: str  # Considera usar un campo específico para contraseñas como PasswordStr
     pwhash: str
     especialidad: str
     igss: str
-    horario_ingreso: str
-    horario_egreso: str
-    horario3: str
-    fechaNacimiento: str
+    fechaNacimiento: str  # Podrías considerar usar un campo específico para fechas
     genero: int
     direccion: str
+    municipio: str
+    departamento: str
+    nacionalidad: str
     telefono: int
     email: str
-    seguro: str
     estado_civil: str
-    confirmacion: str
     emergencia_nombre: str
-    emergencia_apellido: str
     emergencia_parentesco: str
     emergencia_telefono: int
     salario: float
     bonos: float | None
     descuentos: float | None
+    confirmacion: str
+    confirmar_horarios: str
+    chatbot_conversacion: str
+
+
+class Paciente11(BaseModel):
+    id: str | None
+    dpi: str
+    nombre: str
+    apellido: str
+
+
+class User(BaseModel):
+    id: str | None
+    username: str | None
+    email: str | None

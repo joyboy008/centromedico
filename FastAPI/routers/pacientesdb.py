@@ -11,7 +11,6 @@ router = APIRouter(
 )
 
 # inicia el server: uvicorn users:router --reload
-
 # Entidad user
 
 path = db_client.local.users
@@ -39,10 +38,10 @@ async def pacienteApellido(apellido: str):
 #     return search_paciente("_id", ObjectId(id))
 
 
-# Query
-@router.get("/")
-async def user(id: str):
-    return search_user("_id", ObjectId(id))
+# # Query
+# @router.get("/")
+# async def user(id: str):
+#     return search_user("_id", ObjectId(id))
 
 
 # @router.post( # Busqueda por DPI
@@ -64,7 +63,7 @@ async def user(id: str):
 #     return Paciente(**new_paciente)
 
 
-@router.post(  # Busqueda por Apellidos pero falta agregar la condicion de la edad para que no se dupliquen o para que se puedan agregar
+@router.post(  # Busqueda por nombre, falta agregar la condicion del nacimiento
     "/",
     response_model=Paciente,
     status_code=status.HTTP_201_CREATED,
@@ -88,7 +87,6 @@ async def paciente(paciente: Paciente):
     paciente_dict = dict(paciente)
     # print(paciente_dict)
     del paciente_dict["id"]
-
     try:
         path1.find_one_and_replace({"_id": ObjectId(paciente.id)}, paciente_dict)
     except:

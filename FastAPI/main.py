@@ -1,5 +1,11 @@
 from fastapi import FastAPI
-from routers import products, usersdb, basic_auth_users, jwt_auth_users, pacientesdb
+from routers import (
+    usersdb,
+    basic_auth_users,
+    jwt_auth_users,
+    pacientesdb,
+    empleados,
+)
 from fastapi.staticfiles import (
     StaticFiles,
 )  # para poder compartir archivos staticos 1/2
@@ -18,11 +24,11 @@ from fastapi.staticfiles import (
 app = FastAPI()
 
 # Routers
-app.include_router(products.router)
 app.include_router(usersdb.router)
 app.include_router(basic_auth_users.router)
 app.include_router(jwt_auth_users.router)
 app.include_router(pacientesdb.router)
+app.include_router(empleados.router)
 
 # esto es para compartir imagenes o recursos Staticos 2/2
 app.mount("/static", StaticFiles(directory="static"), name="static")
